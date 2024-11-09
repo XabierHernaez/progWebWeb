@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<head>
+    <title>Lista de Equipos</title>
+</head>
+<body>
+    <h1>Lista de Equipos</h1>
+    <ul>
+        {% for equipo in equipo_list %}
+            <li>
+                <a href="{% url 'detalleEquipo' equipo.id %}">
+                    {{ equipo.nombre }}
+                </a>
+            </li>
+        {% empty %}
+            <li>No hay equipos disponibles.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

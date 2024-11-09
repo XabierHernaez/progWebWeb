@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<head>
+    <title>Detalle de la Liga</title>
+</head>
+<body>
+    <h1>Detalle de la Liga</h1>
+    <p>Nombre: {{ liga.nombre }}</p>
+
+    <h2>Equipos</h2>
+    <ul>
+        {% for equipo in liga.equipos.all %}
+            <li>
+                <a href="{% url 'detalleEquipo' equipo.id %}">
+                    {{ equipo.nombre }} ({{ equipo.ciudad }}, fundado en {{ equipo.AnioCreacion }})
+                </a>
+            </li>
+        {% empty %}
+            <li>No hay equipos asociados a esta liga.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<head>
+    <title>Lista de Jugadores</title>
+</head>
+<body>
+    <h1>Lista de Jugadores</h1>
+    <ul>
+        {% for jugador in jugador_list %}
+            <li>
+                <a href="{% url 'detalleJugador' jugador.id %}">
+                    {{ jugador.nombre }} {{ jugador.apellido }} ({{ jugador.posicion }})
+                </a>
+            </li>
+        {% empty %}
+            <li>No hay jugadores registrados.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

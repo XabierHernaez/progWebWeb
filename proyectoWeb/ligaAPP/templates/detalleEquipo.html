@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<head>
+    <title>Detalle del Equipo</title>
+</head>
+<body>
+    <h1>Detalle del Equipo</h1>
+    <p>Nombre: {{ equipo.nombre }}</p>
+    <p>Ciudad: {{ equipo.ciudad }}</p>
+    <p>Máximo Goleador: {{ equipo.maximoGoleadorEquipo }}</p>
+    <p>Máximo Asistente: {{ equipo.maximoAsistenteEquipo }}</p>
+    <p>Año de Creación: {{ equipo.AnioCreacion }}</p>
+
+    <h2>Jugadores</h2>
+    <ul>
+        {% for jugador in equipo.jugadores.all %}
+            <li>
+                <a href="{% url 'detalleJugador' jugador.id %}">
+                    {{ jugador.nombre }} {{ jugador.apellido }} ({{ jugador.posicion }}, {{ jugador.goles }} goles)
+                </a>
+            </li>
+        {% empty %}
+            <li>No hay jugadores asociados a este equipo.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

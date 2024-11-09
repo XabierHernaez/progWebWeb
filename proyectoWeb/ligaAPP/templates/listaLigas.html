@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<head>
+    <title>Lista de Ligas</title>
+</head>
+<body>
+    <h1>Lista de Ligas</h1>
+    <ul>
+        {% for liga in liga_list %}
+            <li>
+                <a href="{% url 'detalleLiga' liga.id %}">
+                    {{ liga.nombre }}
+                </a>
+            </li>
+        {% empty %}
+            <li>No hay ligas registradas.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

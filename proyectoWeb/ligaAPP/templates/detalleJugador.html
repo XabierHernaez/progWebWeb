@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<head>
+    <title>Detalle del Jugador</title>
+</head>
+<body>
+    <h1>Detalle del Jugador</h1>
+    <p>Nombre: {{ jugador.nombre }} </p>
+    <p>Apellido: {{ jugador.apellidos }}</p>
+    <p>Posición: {{ jugador.posicion }}</p>
+    <p>Goles: {{ jugador.goles }}</p>
+    <p>Año de Unión: {{ jugador.anioDeUnion }}</p>
+    <p>Fecha de Nacimiento: {{ jugador.fechaNacimiento }}</p>
+
+    <p><a href="{% url 'detalleEquipo' jugador.equipo.id %}">Volver al equipo</a></p>
+</body>
+</html>
