@@ -8,7 +8,7 @@
         {% for jugador in jugador_list %}
             <li>
                 <a href="{% url 'detalleJugador' jugador.id %}">
-                    {{ jugador.nombre }} {{ jugador.apellido }} ({{ jugador.posicion }})
+                    {{ jugador.nombre }} {{ jugador.apellidos }} ({{ jugador.posicion }})
                 </a>
             </li>
         {% empty %}
