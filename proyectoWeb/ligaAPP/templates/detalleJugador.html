@@ -11,6 +11,10 @@
     <p>Año de Unión: {{ jugador.anioDeUnion }}</p>
     <p>Fecha de Nacimiento: {{ jugador.fechaNacimiento }}</p>
 
+    {% if jugador.imagenJugador %}
+        <img src="{{jugador.imagenJugador}}" alt="imagen" width="300">
+    {% endif %}
+
     <p><a href="{% url 'detalleEquipo' jugador.equipo.id %}">Volver al equipo</a></p>
 </body>
 </html>
