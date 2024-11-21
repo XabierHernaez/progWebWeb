@@ -10,6 +10,12 @@ def listaLigas(request):
     contexto = {'liga_list': ligas}
     return render(request, 'listaLigas.html', contexto)
 
+#class ListaTrabajadorViuw(ListaViuw):
+    #model = trabajador
+    #template_name= 'detalle.html!
+    #context_object_name = 'lista_trabakadores'
+    
+
 def listaEquipos(request):
     equipos = Equipo.objects.order_by('nombre')
     contexto = {'equipo_list': equipos}
