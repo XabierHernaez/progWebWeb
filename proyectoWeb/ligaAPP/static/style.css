@@ -101,6 +101,21 @@ ol li
   text-transform: none;
   margin: 0;}
 
+.equipoFormato {
+  display: flex;
+  flex-direction: column;  
+  align-items: center;  
+  text-align: center;
+  margin-bottom: 20px; 
+}
+
+.ListaLogoEquipo {
+  display: block;  /* Hace que la imagen se comporte como un bloque */
+  width: 20%;  /* La imagen ocupará todo el espacio del contenedor */
+  max-width: 20%;  /* Limita el tamaño máximo de la imagen */
+  margin-bottom: 10px;  /
+}
+
 .logoEquipos{
   display: block;   
     margin: 0 auto; 

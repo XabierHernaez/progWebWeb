@@ -63,21 +63,21 @@
       <div id="content">
         <!-- insert the page content here -->
         <h1>Detalle de la Liga</h1>
-        <p> Imagen:{{liga.imagenLiga}} </p>
-        <p> Nombre: {{ liga.nombre }} </p>
-        <p> Pais: {{liga.pais}} </p>
-        <p> Año: {{liga.anio}} </p>
-        <p> Maximo Goleador: {{liga.maximoGoleadorLiga}} </p>
-        <p> Maximo Asistente: {{liga.maximoAsistenteLiga}} </p>
-        <p> Presidente: {{liga.presidenteLiga}} </p>
+        <p> Imagen:{{detalleLiga.imagenLiga}} </p>
+        <p> Nombre: {{ detalleLiga.nombre }} </p>
+        <p> Pais: {{detalleLiga.pais}} </p>
+        <p> Año: {{detalleLiga.anio}} </p>
+        <p> Maximo Goleador: {{detalleLiga.maximoGoleadorLiga}} </p>
+        <p> Maximo Asistente: {{detalleLiga.maximoAsistenteLiga}} </p>
+        <p> Presidente: {{detalleLiga.presidenteLiga}} </p>
 
         
     
         <h2>Equipos</h2>
         <ul>
-            {% for equipo in liga.equipos.all %}
+            {% for equipo in equipos.all %}
                 <li>
-                    <a href="{% url 'detalleEquipo' equipo.id %}">
+                    <a href="{% url 'detalleEquipo' equipo.pk %}">
                         {{ equipo.nombre }} ({{ equipo.ciudad }}, fundado en {{ equipo.AnioCreacion }})
                     </a>
                 </li>

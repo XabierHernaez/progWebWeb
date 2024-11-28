@@ -62,13 +62,16 @@
       </div>
       <div id="content">
         <!-- insert the page content here -->
-        <h1>Jugadores</h1>
+        <h1>Equipos</h1>
         <ul>
-            {% for equipo in equipo_list %}
+            {% for equipo in listaEquipos %}
             <li>
+                <div class="equipoFormato">
                 <a href="{% url 'detalleEquipo' equipo.id %}">
-                    {{ equipo.nombre }}
+                  <img class="ListaLogoEquipo" src="{{equipo.imagenEquipo }}" alt="logoEquipo" width="200">   
+                  {{ equipo.nombre }}
                 </a>
+                </div>
             </li>
         {% empty %}
             <li>No hay equipos disponibles.</li>

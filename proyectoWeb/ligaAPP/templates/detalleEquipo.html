@@ -64,19 +64,19 @@
         <!-- insert the page content here -->
         <h1>Detalle del Equipo</h1>
         
-        <p><img class="logoEquipos" src="{{equipo.imagenEquipo}}" alt="logoEquipo" width="300"> </p>
-        <p>Nombre: {{ equipo.nombre }}</p>
-        <p>Ciudad: {{ equipo.ciudad }}</p>
-        <p>Máximo Goleador: {{ equipo.maximoGoleadorEquipo }}</p>
-        <p>Máximo Asistente: {{ equipo.maximoAsistenteEquipo }}</p>
-        <p>Año de Creación: {{ equipo.AnioCreacion }}</p>
+        <p><img class="logoEquipos" src="{{detalleEquipo.imagenEquipo }}" alt="logoEquipo" width="300"> </p>
+        <p>Nombre: {{ detalleEquipo.nombre }}</p>
+        <p>Ciudad: {{ detalleEquipo.ciudad }}</p>
+        <p>Máximo Goleador: {{ detalleEquipo.maximoGoleadorEquipo }}</p>
+        <p>Máximo Asistente: {{ detalleEquipo.maximoAsistenteEquipo }}</p>
+        <p>Año de Creación: {{ detalleEquipo.AnioCreacion }}</p>
 
         <h2>Jugadores</h2>
         <ul>
             <ul>
-                {% for jugador in equipo.jugadores.all %}
+                {% for jugador in jugadores %}
                     <li>
-                        <a href="{% url 'detalleJugador' jugador.id %}">
+                        <a href="{% url 'detalleJugador' jugador.pk %}">
                             {{ jugador.nombre }} {{ jugador.apellidos }} ({{ jugador.posicion }}, {{ jugador.goles }} goles)
                         </a>
                     </li>
@@ -85,6 +85,7 @@
                 {% endfor %}
             </ul>
         </ul>
+        <p><a href="{% url 'detalleLiga' detalleEquipo.liga.id %}">Ir a la liga</a></p>
         <p><a href="{% url 'listaEquipos' %}" >Volver a Equipos</a></p>   
        </div>
     </div>

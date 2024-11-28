@@ -64,7 +64,7 @@
         <!-- insert the page content here -->
         <h1>Ligas</h1>
         <ul>
-            {% for liga in liga_list %}
+            {% for liga in listaLigas %}
                 <li>
                     <a href="{% url 'detalleLiga' liga.id %}">
                         {{ liga.nombre }}

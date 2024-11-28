@@ -64,19 +64,21 @@
         <!-- insert the page content here -->
         <h1>Detalle del Jugador</h1>
 
-        {% if jugador.imagenJugador %}
-        <img src="{{jugador.imagenJugador}}" alt="imagen" width="300">
+        {% if detalleJugador.imagenJugador %}
+        <img src="{{detalleJugador.imagenJugador}}" alt="imagen" width="300">
         {% endif %}
        
-        <p><br>Nombre: {{ jugador.nombre }} </p>
-        <p>Apellido: {{ jugador.apellidos }}</p>
-        <p>Posición: {{ jugador.posicion }}</p>
-        <p>Goles: {{ jugador.goles }}</p>
-        <p>Año de Unión: {{ jugador.anioDeUnion }}</p>
-        <p>Fecha de Nacimiento: {{ jugador.fechaNacimiento }}</p>
+        <p><br>Nombre: {{ detalleJugador.nombre }} </p>
+        <p>Apellido: {{ detalleJugador.apellidos }}</p>
+        <p>Posición: {{ detalleJugador.posicion }}</p>
+        <p>Goles: {{ detalleJugador.goles }}</p>
+        <p>Año de Unión: {{ detalleJugador.anioDeUnion }}</p>
+        <p>Fecha de Nacimiento: {{ detalleJugador.fechaNacimiento }}</p>
 
        
-        <p><a href="{% url 'detalleEquipo' jugador.equipo.id %}">Volver al equipo</a></p>
+        <p><a href="{% url 'detalleEquipo' detalleJugador.equipo.id %}">Ir al equipo</a></p>
+        <p><a href="{% url 'listaJugadores' %}" >Ir a Jugadores</a></p>   
+
     </div>
     </div>
     <div id="content_footer"></div>
