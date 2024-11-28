@@ -101,6 +101,11 @@ ol li
   text-transform: none;
   margin: 0;}
 
+.logoEquipos{
+  display: block;   
+    margin: 0 auto; 
+}
+
 #logo_text h1, #logo_text h1 a, #logo_text h1 a:hover 
 { padding: 8px 0 0 0;
   color: #FFF;
