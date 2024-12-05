@@ -256,6 +256,17 @@ ul#menu li a:hover
   padding: 10px;
 }
 
+.informacion {
+  display: inline-block; /* Asegura que el contenedor no ocupe todo el ancho */
+  text-align: left; /* Alinea el texto internamente a la izquierda */
+  margin: 0 auto; /* Centra el contenedor de información dentro de #content */
+}
+
+.informacion p {
+  margin: 5px 0; /* Ajusta los márgenes de los párrafos */
+  text-align: left; /* Opcional: Asegura que los textos en cada párrafo se alineen a la izquierda */
+}
+
 #content ul {
   display: flex; /* Flexbox para manejar alineación de los elementos */
   flex-wrap: wrap; /* Permite que los elementos se ajusten automáticamente en varias filas */

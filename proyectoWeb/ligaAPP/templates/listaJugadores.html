@@ -64,11 +64,14 @@
         <!-- insert the page content here -->
         <h1>Jugadores</h1>
         <ul>
-            {% for jugador in listaJugadores %}
+        {% for jugador in listaJugadores %}
             <li>
-                <a href="{% url 'detalleJugador' jugador.id %}">
-                    {{ jugador.nombre }} {{ jugador.apellidos }} ({{ jugador.posicion }}, {{jugador.nacionalidad}}) 
-                </a>
+              <div class="equipoFormato">
+                  <a href="{% url 'detalleJugador' jugador.id %}">
+                      <img class="ListaLogoEquipo" src="{{ jugador.imagenJugador }}" alt="{{ jugador.nombre }} logo">
+                      <p>{{ jugador.nombre }} {{ jugador.apellidos }}</p>
+                  </a>
+              </div>
             </li>
         {% empty %}
             <li>No hay jugadores registrados.</li>

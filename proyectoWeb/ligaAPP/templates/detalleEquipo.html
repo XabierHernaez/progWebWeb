@@ -61,17 +61,15 @@
         </div>
       </div>
       <div id="content">
-        <!-- insert the page content here -->
-        <h1>Detalle del Equipo</h1>
-        
-        <p><img class="logoEquipos" src="{{detalleEquipo.imagenEquipo }}" alt="logoEquipo" width="300"> </p>
-        <p>Nombre: {{ detalleEquipo.nombre }}</p>
-        <p>Ciudad: {{ detalleEquipo.ciudad }}</p>
-        <p>Máximo Goleador: {{ detalleEquipo.maximoGoleadorEquipo }}</p>
-        <p>Máximo Asistente: {{ detalleEquipo.maximoAsistenteEquipo }}</p>
-        <p>Año de Creación: {{ detalleEquipo.AnioCreacion }}</p>
-
-        <h2>Jugadores</h2>
+        <div class="informacion">
+          <h1>Detalle del Equipo</h1>
+          <img src="{{detalleEquipo.imagenEquipo }}" alt="logoEquipo" width="100">
+          <p>Nombre: {{ detalleEquipo.nombre }}</p>
+          <p>Ciudad: {{ detalleEquipo.ciudad }}</p>
+          <p>Máximo Goleador: {{ detalleEquipo.maximoGoleadorEquipo }}</p>
+          <p>Máximo Asistente: {{ detalleEquipo.maximoAsistenteEquipo }}</p>
+          <p>Año de Creación: {{ detalleEquipo.AnioCreacion }}</p>
+          <h2>Jugadores</h2>
         <ul>
             <ul>
                 {% for jugador in jugadores %}
@@ -87,6 +85,8 @@
         </ul>
         <p><a href="{% url 'detalleLiga' detalleEquipo.liga.id %}">Ir a la liga</a></p>
         <p><a href="{% url 'listaEquipos' %}" >Volver a Equipos</a></p>   
+        </div>
+        
        </div>
     </div>
     <div id="content_footer"></div>

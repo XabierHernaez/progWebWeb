@@ -61,15 +61,17 @@
         </div>
       </div>
       <div id="content">
-        <!-- insert the page content here -->
         <h1>Ligas</h1>
         <ul>
             {% for liga in listaLigas %}
-                <li>
-                    <a href="{% url 'detalleLiga' liga.id %}">
-                        {{ liga.nombre }}
-                    </a>
-                </li>
+            <li>
+                <div class="equipoFormato">
+                  <a href="{% url 'detalleLiga' liga.id %}">
+                      <img class="ListaLogoEquipo" src="{{ liga.imagenLiga }}" alt="{{ liga.nombre }} logo">
+                      <p>{{ liga.nombre }}</p>
+                  </a>
+                </div>
+            </li>
             {% empty %}
                 <li>No hay ligas registradas.</li>
             {% endfor %}

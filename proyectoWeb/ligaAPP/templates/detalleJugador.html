@@ -63,24 +63,21 @@
       <div id="content">
         <!-- insert the page content here -->
         <h1>Detalle del Jugador</h1>
-
-        {% if detalleJugador.imagenJugador %}
-        <img src="{{detalleJugador.imagenJugador}}" alt="imagen" width="300">
-        {% endif %}
-       
-        <p><br>Nombre: {{ detalleJugador.nombre }} </p>
-        <p>Apellido: {{ detalleJugador.apellidos }}</p>
-        <p>Nacionalidad: {{detalleJugador.nacionalidad}}</p>
-        <p>Posición: {{ detalleJugador.posicion }}</p>
-        <p>Goles: {{ detalleJugador.goles }}</p>
-        <p>Año de Unión: {{ detalleJugador.anioDeUnion }}</p>
-        <p>Fecha de Nacimiento: {{ detalleJugador.fechaNacimiento }}</p>
-
-       
-        <p><a href="{% url 'detalleEquipo' detalleJugador.equipo.id %}">Ir al equipo</a></p>
-        <p><a href="{% url 'listaJugadores' %}" >Ir a Jugadores</a></p>   
-
-    </div>
+        <div class="informacion">
+          {% if detalleJugador.imagenJugador %}
+          <img src="{{detalleJugador.imagenJugador}}" alt="imagen" width="  200">
+          {% endif %}
+          <p><br>Nombre: {{ detalleJugador.nombre }} </p>
+          <p>Apellido: {{ detalleJugador.apellidos }}</p>
+          <p>Nacionalidad: {{detalleJugador.nacionalidad}}</p>
+          <p>Posición: {{ detalleJugador.posicion }}</p>
+          <p>Goles: {{ detalleJugador.goles }}</p>
+          <p>Año de Unión: {{ detalleJugador.anioDeUnion }}</p>
+          <p>Fecha de Nacimiento: {{ detalleJugador.fechaNacimiento }}</p>
+          <p><a href="{% url 'detalleEquipo' detalleJugador.equipo.id %}">Ir al equipo</a></p>
+          <p><a href="{% url 'listaJugadores' %}" >Ir a Jugadores</a></p>
+        </div>
+      </div>
     </div>
     <div id="content_footer"></div>
     <div id="footer">
