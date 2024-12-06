@@ -39,4 +39,4 @@ class Jugador(models.Model):
     imagenJugador = models.URLField(max_length=600, null= True, blank=True)
 
     def __str__(self):
-        return self.nombre + self.apellidos
+        return self.nombre +" "+ self.apellidos
