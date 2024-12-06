@@ -9,8 +9,8 @@
   <meta name="keywords" content="website keywords, website keywords" />
   <meta http-equiv="content-type" content="text/html; charset=windows-1252" />
   <link rel="stylesheet" href="{% static 'style.css' %}"/>
+  <script src="{% static 'javaScript/mostrarEquipos.js' %}"></script>
 </head>
-
 <body>
   <div id="main">
     <div id="header">
@@ -38,10 +38,15 @@
           <div class="sidebar_top"></div>
           <div class="sidebar_item">
             <!-- insert your sidebar items here -->
-            <h3>Latest News</h3>
-            <h4>New Website Launched</h4>
-            <h5>January 1st, 2010</h5>
-            <p>2010 sees the redesign of our website.....&nbsp;<a href="#">read more</a></p>
+            <h3>Equipos a mostrar</h3>
+            {% for equipo in listaEquipos %}
+              <p>
+                {{ equipo.nombre }} 
+                <input type="checkbox" name="equipo_{{ equipo.id }}" value="{{ equipo.id }}" checked>
+              </p>
+            {% empty %}
+              <li>No hay equipos disponibles.</li>
+            {% endfor %}
           </div>
           <div class="sidebar_base"></div>
         </div>
@@ -65,7 +70,7 @@
         <ul>
             {% for equipo in listaEquipos %}
             <li>
-                <div class="equipoFormato">
+                <div class="equipoFormato" data-equipo-id="{{ equipo.id }}">
                     <a href="{% url 'detalleEquipo' equipo.id %}">
                         <img class="ListaLogoEquipo" src="{{ equipo.imagenEquipo }}" alt="{{ equipo.nombre }} logo">
                         <p>{{ equipo.nombre }}</p>

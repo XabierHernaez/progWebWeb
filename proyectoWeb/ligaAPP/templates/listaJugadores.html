@@ -9,6 +9,8 @@
   <meta name="keywords" content="website keywords, website keywords" />
   <meta http-equiv="content-type" content="text/html; charset=windows-1252" />
   <link rel="stylesheet" href="{% static 'style.css' %}"/>
+  <script src="{% static 'javaScript/mostrarJugadores.js' %}"></script>
+  <script src="{% static 'javaScript/buscarNacionalidad.js' %}"></script>
 </head>
 
 <body>
@@ -37,12 +39,18 @@
         <div class="sidebar">
           <div class="sidebar_top"></div>
           <div class="sidebar_item">
-            <!-- insert your sidebar items here -->
-            <h3>Latest News</h3>
-            <h4>New Website Launched</h4>
-            <h5>January 1st, 2010</h5>
-            <p>2010 sees the redesign of our website.....&nbsp;<a href="#">read more</a></p>
-          </div>
+            <h3>Jugadores a mostrar</h3>
+            {% for jugador in listaJugadores %}
+            <p data-nacionalidad="{{ jugador.nacionalidad }}">
+                {{ jugador.nombre }} 
+                <input type="checkbox" name="jugador_{{ jugador.id }}" value="{{ jugador.id }}" checked>
+            </p>
+            {% empty %}
+                <li>No hay jugadores disponibles.</li>
+            {% endfor %}
+            <label for="buscarJugadores">Buscar por Nacionalidad:</label>
+            <input type="text" id="buscarJugadores" name="buscarJugadores" placeholder="Nacionalidad: ">
+        </div>
           <div class="sidebar_base"></div>
         </div>
         <div class="sidebar">
@@ -66,7 +74,7 @@
         <ul>
         {% for jugador in listaJugadores %}
             <li>
-              <div class="equipoFormato">
+              <div class="equipoFormato" data-jugador-id="{{ jugador.id }}" data-nacionalidad="{{ jugador.nacionalidad|lower }}">
                   <a href="{% url 'detalleJugador' jugador.id %}">
                       <img class="ListaLogoEquipo" src="{{ jugador.imagenJugador }}" alt="{{ jugador.nombre }} logo">
                       <p>{{ jugador.nombre }} {{ jugador.apellidos }}</p>

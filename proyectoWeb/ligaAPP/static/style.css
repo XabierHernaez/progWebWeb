@@ -62,7 +62,9 @@ ul
 { margin: 2px 0 22px 17px;}
 
 ul li
-{ list-style-type: circle;
+{ 
+  
+  list-style-type: none;
   margin: 0 0 6px 0; 
   padding: 0 0 4px 5px;}
 
@@ -119,6 +121,7 @@ ol li
   object-fit: cover; /* Ajusta la imagen sin distorsionarla */
   border-radius: 10px; /* Esquinas redondeadas */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra opcional */
+  object-fit: contain;
 }
 
 .equipoFormato p {
@@ -373,3 +376,8 @@ table tr td
 { background: #E5E5DB;
   color: #47433F;
   border-top: 1px solid #FFF;}
+
+.introduccion {
+    width:70%;
+    
+}
