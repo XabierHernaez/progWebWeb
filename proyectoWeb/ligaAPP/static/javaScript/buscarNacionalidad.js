@@ -1,36 +1,56 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const searchInput = document.getElementById("buscarJugadores"); // El campo de texto para buscar
-    const jugadoresSidebar = document.querySelectorAll('.sidebar_item p'); // Los elementos de jugadores en la sidebar
-    const jugadoresContenido = document.querySelectorAll('.equipoFormato'); // Los elementos de jugadores en el contenido principal
+    // Obtén el select de nacionalidades
+    const nacionalidadSelect = document.getElementById('nacionalidadSelect');
 
-    // Función para actualizar los checkboxes y ocultar los jugadores según la nacionalidad
-    searchInput.addEventListener("input", function() {
-        const query = searchInput.value.toLowerCase(); // Convertir la entrada a minúsculas
+    // Obtener todas las nacionalidades de los jugadores y eliminar duplicados
+    const nacionalidades = new Set(); // Usamos un Set para eliminar duplicados
 
-        // Iterar sobre los jugadores en la sidebar
-        jugadoresSidebar.forEach(function(jugador) {
-            const nacionalidadJugador = jugador.getAttribute("data-nacionalidad").toLowerCase(); // Obtener la nacionalidad del jugador
-            const checkbox = jugador.querySelector('input[type="checkbox"]'); // El checkbox del jugador
-
-            // Verificar si la nacionalidad coincide con la búsqueda
-            if (nacionalidadJugador.includes(query)) {
-                checkbox.checked = true; // Marcar el checkbox si coincide
-            } else {
-                checkbox.checked = false; // Desmarcar el checkbox si no coincide
-            }
-        });
-
-        // Iterar sobre los jugadores en el contenido principal
-        jugadoresContenido.forEach(function(jugador) {
-            const nacionalidadJugador = jugador.getAttribute("data-nacionalidad").toLowerCase(); // Obtener la nacionalidad del jugador
-            const jugadorElemento = jugador.closest('li'); // El <li> del jugador (para ocultarlo)
-
-            // Verificar si la nacionalidad coincide con la búsqueda
-            if (nacionalidadJugador.includes(query)) {
-                jugadorElemento.style.display = ''; // Mostrar el jugador si coincide
-            } else {
-                jugadorElemento.style.display = 'none'; // Ocultar el jugador si no coincide
-            }
-        });
+    // Recorrer todos los jugadores y agregar las nacionalidades al Set
+    document.querySelectorAll('details p[data-nacionalidad]').forEach(jugadorP => {
+      const nacionalidad = jugadorP.getAttribute('data-nacionalidad');
+      
+      // Verificar que la nacionalidad no esté vacía o sea null
+      if (nacionalidad && nacionalidad.trim() !== '') {
+        nacionalidades.add(nacionalidad);
+      }
     });
-});
+
+    // Crear las opciones del select con las nacionalidades únicas
+    nacionalidades.forEach(nacionalidad => {
+      const option = document.createElement('option');
+      option.value = nacionalidad;
+      option.textContent = nacionalidad;
+      nacionalidadSelect.appendChild(option);
+    });
+
+    // Asegurarse de tener la opción "Todas" como primera opción
+    const optionAll = document.createElement('option');
+    optionAll.value = "";
+    optionAll.textContent = "Todas";
+    nacionalidadSelect.insertBefore(optionAll, nacionalidadSelect.firstChild); // Inserta "Todas" como primer opción
+
+    // Función para actualizar la visibilidad de los jugadores según el filtro
+    const updateJugadores = () => {
+      const selectedNacionalidad = nacionalidadSelect.value; // Nacionalidad seleccionada
+
+      // Recorrer todos los jugadores y filtrar según la nacionalidad seleccionada
+      document.querySelectorAll('details p[data-nacionalidad]').forEach(jugadorP => {
+        const jugadorNacionalidad = jugadorP.getAttribute('data-nacionalidad');
+
+        // Filtra los jugadores por la nacionalidad seleccionada
+        if (
+          (selectedNacionalidad === "" || jugadorNacionalidad === selectedNacionalidad)
+        ) {
+          jugadorP.style.display = "block"; // Muestra el jugador
+        } else {
+          jugadorP.style.display = "none"; // Oculta el jugador
+        }
+      });
+    };
+
+    // Actualiza la visibilidad de los jugadores cuando cambia el filtro de nacionalidad
+    nacionalidadSelect.addEventListener("change", updateJugadores);
+
+    // Llama a la función una vez para ajustar la visibilidad al cargar la página
+    updateJugadores();
+  });

@@ -39,7 +39,8 @@
         <div class="sidebar">
           <div class="sidebar_top"></div>
           <div class="sidebar_item">
-            <h3>Jugadores a mostrar</h3>
+            <details>
+            <summary>Jugadores a mostrar</summary>
             {% for jugador in listaJugadores %}
             <p data-nacionalidad="{{ jugador.nacionalidad }}">
                 {{ jugador.nombre }} 
@@ -50,6 +51,7 @@
             {% endfor %}
             <label for="buscarJugadores">Buscar por Nacionalidad:</label>
             <input type="text" id="buscarJugadores" name="buscarJugadores" placeholder="Nacionalidad: ">
+            </details>
         </div>
           <div class="sidebar_base"></div>
         </div>

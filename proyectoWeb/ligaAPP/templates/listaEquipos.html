@@ -39,7 +39,8 @@
           <div class="sidebar_top"></div>
           <div class="sidebar_item">
             <!-- insert your sidebar items here -->
-            <h3>Equipos a mostrar</h3>
+             <details>
+            <summary>Equipos a mostrar</summary>
             {% for equipo in listaEquipos %}
               <p data-nombre="{{ equipo.nombre }}">
                 {{ equipo.nombre }} 
@@ -51,6 +52,10 @@
             <label for="buscarEquipo">Buscador de Equipo:</label>
             <input type="text" id="buscarEquipo" name="buscarEquipo" placeholder="Nombre: ">
           </div>
+        </details>
+
+
+
           <div class="sidebar_base"></div>
         </div>
         <div class="sidebar">
