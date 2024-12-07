@@ -10,6 +10,7 @@
   <meta http-equiv="content-type" content="text/html; charset=windows-1252" />
   <link rel="stylesheet" href="{% static 'style.css' %}"/>
   <script src="{% static 'javaScript/mostrarEquipos.js' %}"></script>
+  <script src="{% static 'javaScript/buscarEquipo.js' %}"></script>
 </head>
 <body>
   <div id="main">
@@ -40,13 +41,15 @@
             <!-- insert your sidebar items here -->
             <h3>Equipos a mostrar</h3>
             {% for equipo in listaEquipos %}
-              <p>
+              <p data-nombre="{{ equipo.nombre }}">
                 {{ equipo.nombre }} 
                 <input type="checkbox" name="equipo_{{ equipo.id }}" value="{{ equipo.id }}" checked>
               </p>
             {% empty %}
               <li>No hay equipos disponibles.</li>
             {% endfor %}
+            <label for="buscarEquipo">Buscador de Equipo:</label>
+            <input type="text" id="buscarEquipo" name="buscarEquipo" placeholder="Nombre: ">
           </div>
           <div class="sidebar_base"></div>
         </div>
@@ -70,7 +73,7 @@
         <ul>
             {% for equipo in listaEquipos %}
             <li>
-                <div class="equipoFormato" data-equipo-id="{{ equipo.id }}">
+                <div class="equipoFormato" data-equipo-id="{{ equipo.id }}" data-nombre="{{ equipo.nombre|lower }}">
                     <a href="{% url 'detalleEquipo' equipo.id %}">
                         <img class="ListaLogoEquipo" src="{{ equipo.imagenEquipo }}" alt="{{ equipo.nombre }} logo">
                         <p>{{ equipo.nombre }}</p>
