@@ -4,26 +4,46 @@ from django.views.generic import ListView, DetailView
 from .models import Liga, Equipo, Jugador
 import requests
 from bs4 import BeautifulSoup
+import time
 
 
 def obtener_datos(request):
-    # URL de la página web a analizar
-    url = 'https://www.marca.com/'
-    
-    # Realizamos una solicitud GET para obtener el contenido de la página
+    url = 'https://www.marca.com/futbol.html?intcmp=MENUPROD&s_kw=futbol'
     response = requests.get(url)
-    
+
     if response.status_code == 200:
-        # Usamos BeautifulSoup con el parser lxml
         soup = BeautifulSoup(response.text, 'lxml')
-        
-        # Extraemos un elemento (por ejemplo, el título de la página)
-        titulo = soup.title.string
-        
-        # Devolvemos el título en una respuesta HTTP
-        return HttpResponse(f'El título de la página es: {titulo}')
+        enlaces = soup.find_all('a', href=True)
+        noticias = []
+
+        for enlace in enlaces:
+            if '/futbol/' in enlace['href']:
+                enlace_noticia = enlace['href']
+                if enlace_noticia.startswith('/'):
+                    enlace_noticia = f'https://www.marca.com{enlace_noticia}'
+
+                response_noticia = requests.get(enlace_noticia)
+                if response_noticia.status_code == 200:
+                    soup_noticia = BeautifulSoup(response_noticia.text, 'lxml')
+                    titulo_noticia = soup_noticia.find('h1').get_text(strip=True) if soup_noticia.find('h1') else 'Título no disponible'
+                    contenido_noticia = soup_noticia.find('div', {'class': 'ue-c-article__body'})
+                    contenido_noticia = contenido_noticia.get_text(' ', strip=True) if contenido_noticia else 'Contenido no disponible'
+
+                    noticias.append({
+                        'titulo': titulo_noticia,
+                        'contenido': contenido_noticia,
+                        'enlace': enlace_noticia
+                    })
+
+                if len(noticias) >= 3:
+                    break
+
+        return render(request, 'marca.html', {'noticias': noticias})
     else:
         return HttpResponse('Error al obtener la página', status=500)
+
+
+
 
 class IndexView(ListView):
     template_name = 'index.html'

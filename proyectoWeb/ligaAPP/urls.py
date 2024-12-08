@@ -14,5 +14,5 @@ urlpatterns = [
     path('equipo/<int:pk>/', DetalleEquipoView.as_view(), name='detalleEquipo'),
     path('jugador/<int:pk>/', DetalleJugadorView.as_view(), name='detalleJugador'),
 
-    path('obtener-datos/', obtener_datos, name='obtener_datos'),  # Aquí está la nueva ruta
+    path('obtener-datos/', obtener_datos, name='obtener_datos'), 
 ]

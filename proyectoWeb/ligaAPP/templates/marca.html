@@ -1,0 +1,65 @@
+{% load static %}
+
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>Futbol-Jugadores</title>
+  <meta name="description" content="website description" />
+  <meta name="keywords" content="website keywords, website keywords" />
+  <meta http-equiv="content-type" content="text/html; charset=windows-1252" />
+  <link rel="stylesheet" href="{% static 'style.css' %}"/>
+  <script src="{% static 'javaScript/mostrarJugadores.js' %}"></script>
+  <script src="{% static 'javaScript/buscarNacionalidad.js' %}"></script>
+</head>
+<body>
+  <div id="main">
+    <div id="header">
+      <div id="logo">
+        <div id="logo_text">
+          <h1><a href="{% url 'index' %}">Admin<span class="logo_colour">Futbol</span></a></h1>
+          <h2>Simple. Contemporary. Website Template.</h2>
+        </div>
+      </div>
+      <div id="menubar">
+        <ul id="menu">
+          <li><a href="{% url 'index' %}">Home</a></li>
+          <li><a href="{% url 'listaLigas' %}">Ligas</a></li>
+          <li><a href="{% url 'listaEquipos' %}">Equipos</a></li>
+          <li><a href="{% url 'listaJugadores' %}">Jugadores</a></li>
+        </ul>
+      </div>
+    </div>
+    <div id="content_header"></div>
+    <div id="site_content">
+      <div id="sidebar_container">
+        <div class="sidebar">
+          <div class="sidebar_item">
+            <h3>Paginas oficiales</h3>
+            <ul>
+              <li><a href="https://www.laliga.com/es-GB">La Liga</a></li>
+              <li><a href="https://www.premierleague.com/">Premier League</a></li>
+              <li><a href="https://www.legaseriea.it/en">Serie A</a></li>
+              <li><a href="https://www.bundesliga.com/es/bundesliga">Bundesliga</a></li>
+              <li><a href="https://ligue1.com/">League 1 </a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div id="content">
+        <h1>Las ultimas noticias del futbol:</h1>
+        {% for noticia in noticias %}
+          <article>
+            <h2>{{ noticia.titulo }}</h2>
+            <p>{{ noticia.contenido }}</p>
+            <p><a href="{{ noticia.enlace }}" target="_blank">Leer más...</a></p>
+          </article>
+        {% endfor %}
+      </div>
+    </div>
+    <div id="footer">
+      <p><a href="{% url 'index' %}">Home</a> | <a href="{% url 'listaLigas' %}">Ligas</a> | <a href="{% url 'listaEquipos' %}">Equipos</a></p>
+      <p>Copyright &copy; simplestyle_6 | HTML5 | CSS | Free Templates</p>
+    </div>
+  </div>
+</body>
+</html>

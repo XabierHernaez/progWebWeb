@@ -382,3 +382,26 @@ table tr td
     
 }
 
+#jugadores-container {
+  max-height: 400px; /* Ajusta la altura máxima del contenedor */
+  overflow-y: scroll; /* Habilita el desplazamiento vertical */
+  white-space: nowrap; /* Evita que los elementos se salten a la siguiente fila */
+  padding: 10px;
+}
+
+#jugadores-list {
+  display: flex; /* Organiza los elementos en fila */
+  flex-direction: column; /* Coloca los jugadores en una columna */
+  gap: 15px; /* Espacio entre los jugadores */
+}
+
+.jugador-item {
+  display: flex; /* Alinea los elementos */
+  justify-content: start; /* Alineación al inicio */
+  align-items: center; /* Alinea verticalmente */
+}
+
+.jugador-item img {
+  border-radius: 50%;
+  margin-right: 10px; /* Espacio entre la imagen y el nombre */
+}
