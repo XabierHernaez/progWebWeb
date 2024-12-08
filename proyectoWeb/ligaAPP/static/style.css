@@ -377,9 +377,18 @@ table tr td
   color: #47433F;
   border-top: 1px solid #FFF;}
 
-.introduccion {
-    width:70%;
-    
+  .introduccion p {
+    text-align: justify !important;
+    margin: 0 auto !important;
+    line-height: 1.6 !important; /* Mejora la legibilidad */
+    padding-left: 20px !important;
+    width: 90%;
+    font-size: 18px !important; /* Tamaño de letra más grande */
+    font-weight: bold !important; /* Hace la letra más fuerte */
+    font-family: Arial, sans-serif; /* Cambia el tipo de letra, opcional */
+  }
+.introduccion{
+  margin-right: 300px !important;
 }
 
 #jugadores-container {
