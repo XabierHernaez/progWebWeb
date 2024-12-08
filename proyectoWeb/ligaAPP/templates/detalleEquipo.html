@@ -9,6 +9,7 @@
   <meta name="keywords" content="website keywords, website keywords" />
   <meta http-equiv="content-type" content="text/html; charset=windows-1252" />
   <link rel="stylesheet" href="{% static 'style.css' %}"/>
+  <script src="{% static 'js/scroll.js' %}"></script>
 </head>
 
 <body>
@@ -16,14 +17,12 @@
     <div id="header">
       <div id="logo">
         <div id="logo_text">
-          <!-- class="logo_colour", allows you to change the colour of the text -->
           <h1><a href="{% url 'index' %}">Admin<span class="logo_colour">Futbol</span></a></h1>
           <h2>Simple. Contemporary. Website Template.</h2>
         </div>
       </div>
       <div id="menubar">
         <ul id="menu">
-          <!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
           <li><a href="{% url 'index' %}">Home</a></li>
           <li><a href="{% url 'listaLigas' %}">Ligas</a></li>
           <li><a href="{% url 'listaEquipos' %}">Equipos</a></li>
@@ -37,7 +36,6 @@
         <div class="sidebar">
           <div class="sidebar_top"></div>
           <div class="sidebar_item">
-            <!-- insert your sidebar items here -->
             <h3>Latest News</h3>
             <h4>New Website Launched</h4>
             <h5>January 1st, 2010</h5>
@@ -70,24 +68,31 @@
           <p>Máximo Asistente: {{ detalleEquipo.maximoAsistenteEquipo }}</p>
           <p>Año de Creación: {{ detalleEquipo.AnioCreacion }}</p>
           <h2>Jugadores</h2>
-        <ul>
-            <ul>
-                {% for jugador in jugadores %}
-                    <li>
-                        <a href="{% url 'detalleJugador' jugador.pk %}">
-                            {{ jugador.nombre }} {{ jugador.apellidos }} ({{ jugador.posicion }}, {{ jugador.goles }} goles)
-                        </a>
-                    </li>
-                {% empty %}
-                    <li>No hay jugadores asociados a este equipo.</li>
-                {% endfor %}
-            </ul>
-        </ul>
-        <p><a href="{% url 'detalleLiga' detalleEquipo.liga.id %}">Ir a la liga</a></p>
-        <p><a href="{% url 'listaEquipos' %}" >Volver a Equipos</a></p>   
         </div>
-        
-       </div>
+        <!-- Contenedor con scroll lateral -->
+        <div id="jugadores-container">
+          <div id="jugadores-list">
+              {% for jugador in jugadores %}
+                  <div class="jugador-item">
+                      <a href="{% url 'detalleJugador' jugador.pk %}">
+                          <img src="{{ jugador.imagenJugador }}" 
+                               alt="Imagen de {{ jugador.nombre }}" 
+                               width="50" height="50" 
+                               style="border-radius: 50%; margin-right: 10px;">
+                          {{ jugador.nombre }} {{ jugador.apellidos }} 
+                          ({{ jugador.posicion }}, {{ jugador.goles }} goles)
+                      </a>
+                  </div>
+              {% empty %}
+                  <p>No hay jugadores asociados a este equipo.</p>
+              {% endfor %}
+          </div>
+        </div>
+        <div class="content">
+          <p><a href="{% url 'detalleLiga' detalleEquipo.liga.id %}">Ir a la liga</a></p>
+          <p><a href="{% url 'listaEquipos' %}" >Volver a Equipos</a></p>   
+        </div>
+      </div>
     </div>
     <div id="content_footer"></div>
     <div id="footer">
